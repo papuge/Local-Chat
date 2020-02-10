@@ -66,11 +66,6 @@ public class ChatsInfo implements ChatsDetails {
 
     }
 
-    @Override
-    public boolean isMemberOfChat(User user, Chat chat) {
-        return false;
-    }
-
     private void usersToJson() {
         JSONArray jsonArray = new JSONArray();
 

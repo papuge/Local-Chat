@@ -3,15 +3,11 @@ import java.util.ArrayList;
 
 public interface Chat {
 
-    public String getName();
+    String getName();
 
-    public InetAddress getAddress();
+    InetAddress getAddress();
 
-    public int getPort();
+    int getPort();
 
-    public void join();
-
-    public void leave();
-
-    public void sendMessage(String message);
+    void sendMessage(String message);
 }

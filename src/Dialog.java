@@ -1,6 +1,11 @@
+import java.io.IOException;
 import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.util.ArrayList;
 
 public class Dialog implements Chat, Runnable {
+
+    private MulticastSocket mSocket;
 
     private String name;
     private InetAddress address;
@@ -10,6 +15,12 @@ public class Dialog implements Chat, Runnable {
         this.name = name;
         this.address = address;
         this.port = port;
+
+        try {
+            mSocket = new MulticastSocket(this.port);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -25,16 +36,6 @@ public class Dialog implements Chat, Runnable {
     @Override
     public int getPort() {
         return port;
-    }
-
-    @Override
-    public void join() {
-
-    }
-
-    @Override
-    public void leave() {
-
     }
 
     @Override

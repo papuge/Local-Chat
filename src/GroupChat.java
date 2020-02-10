@@ -30,16 +30,6 @@ public class GroupChat implements Chat, Runnable {
     }
 
     @Override
-    public void join() {
-
-    }
-
-    @Override
-    public void leave() {
-
-    }
-
-    @Override
     public void sendMessage(String message) {
 
     }
