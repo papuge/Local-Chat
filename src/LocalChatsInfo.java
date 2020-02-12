@@ -58,31 +58,15 @@ public class LocalChatsInfo {
 
     public String findDialogIpByName(String name, String username) {
         for (Chat chat : chats) {
-            if ((chat.getName().contains(name + "|") || chat.getName().contains("|" + name)) &&
-                    (chat.getName().contains(username + "|") || chat.getName().contains("|" + username))) {
+            boolean lineLeft = chat.getName().contains("|" + name);
+            boolean lineRight = chat.getName().contains(name + "|");
+            if ((lineLeft || lineRight) &&
+                    (chat.getName().contains(username + "|") && lineLeft
+                            || chat.getName().contains("|" + username) && lineRight)) {
                 return chat.getChatIp();
             }
         }
         return null;
-    }
-
-    private void chatsToJson() {
-        JSONArray jsonArray = new JSONArray();
-
-        for (Chat chat : chats) {
-            JSONObject obj = new JSONObject();
-            obj.put(NAME_KEY, chat.getName());
-            obj.put(CHAT_IP_KEY, chat.getChatIp());
-            jsonArray.add(obj);
-        }
-
-        try {
-            FileWriter fw = new FileWriter(chatFile, false);
-            fw.write(jsonArray.toJSONString());
-            fw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private void chatsFromJson(String json) {

@@ -19,6 +19,11 @@ public class Program {
             String input = scanner.nextLine();
             if(input.equals("\\exit")) {
                 System.out.print("Buy!\n");
+                try {
+                    t.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 break;
             }
             System.out.print("You said: ");
@@ -26,5 +31,6 @@ public class Program {
                 System.out.print("not a message\n");
             }
         }
+        return;
     }
 }
