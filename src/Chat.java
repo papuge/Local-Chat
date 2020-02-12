@@ -1,13 +1,18 @@
-import java.net.InetAddress;
-import java.util.ArrayList;
+public class Chat {
 
-public interface Chat {
+    private String name;
+    private String chatIp;
 
-    String getName();
+    public String getName() {
+        return this.name;
+    }
 
-    InetAddress getAddress();
+    public String getChatIp() {
+        return this.chatIp;
+    }
 
-    int getPort();
-
-    void sendMessage(String message);
+    public Chat(String name, String address) {
+        this.name = name;
+        this.chatIp = address;
+    }
 }

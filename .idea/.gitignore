@@ -2,3 +2,4 @@
 /.idea
 chats_data.json
 users_data.json
+current_user.json
