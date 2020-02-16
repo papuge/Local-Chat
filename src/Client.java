@@ -46,10 +46,10 @@ public class Client implements Runnable {
                     boolean isUserDialog = !chat.getName().startsWith(username + "|")
                             && !chat.getName().endsWith("|" + username);
                     boolean isDialog = chat.getName().contains("|");
-                    if(isDialog && isUserDialog) {
+                    if (isDialog && isUserDialog) {
                         continue;
                     }
-                    if(!isDialog && !clientGroupsNames.contains(chat.getName())) {
+                    if (!isDialog && !clientGroupsNames.contains(chat.getName())) {
                         continue;
                     }
                     socket.joinGroup(InetAddress.getByName(chat.getChatIp()));
@@ -81,7 +81,8 @@ public class Client implements Runnable {
             if (pos != -1) {
                 String chatName = input.substring(1, pos);
                 ip = localChatsInfo.findChatIpByName(chatName);
-                message = "\u001b[32;1m" + input.substring(0, pos + 1) + "\u001b[0m" + input.substring(pos + 1);
+                message = "\u001b[32;1m" + input.substring(0, pos + 1) + " "
+                        + username + ":" + "\u001b[0m" + input.substring(pos + 1);
             }
         }
 
@@ -106,9 +107,9 @@ public class Client implements Runnable {
 
     private void readClientGroups() {
         try {
-            if(groupsFile.exists()) {
+            if (groupsFile.exists()) {
                 String json = Files.readString(Paths.get(GROUPS_NAME_FILE));
-                if(json.isEmpty()) {
+                if (json.isEmpty()) {
                     return;
                 }
                 try {
